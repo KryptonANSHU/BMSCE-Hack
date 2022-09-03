@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-// import Image from "next/image";
+import { ImageData } from "./Imagedata";
+import { BgImage } from "./Imagedata";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 import "swiper/css";
@@ -22,7 +23,7 @@ export default function Working() {
     <div className="max-w-7xl mt-20 text-center">
       <div className="md:mt-20 flex flex-col mb-16 text-white font-manrope">
 
-        <h1 className="m-2 text-sky-400 text-lg md:text-xl tracking-wide font-thin">Discover More</h1>
+        {/* <h1 className="m-2 text-sky-400 text-lg md:text-xl tracking-wide font-thin">Discover More</h1> */}
         <h1 className="font-bold text-3xl md:text-5xl">
           How does it work?
         </h1>
@@ -30,7 +31,7 @@ export default function Working() {
         <div className="grid grid-cols-2 h-full">
           <div className="hidden md:flex max-w-2xl col-span-1 ml-4 p-16 flex-col items-start justify-center">
             {
-              images.map((image, i) => {
+              ImageData.map((image, i) => {
                 return (
                   <button
                     key={i}
@@ -70,16 +71,16 @@ export default function Working() {
               >
                 <SwiperDummyController index={currentDiv} />
                 <SwiperSlide>
-                  <img src={bg_images[0]} className={styles.slideImage} />
+                  <img src={BgImage[0]} className={styles.slideImage} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src={bg_images[1]} className={styles.slideImage} />
+                  <img src={BgImage[1]} className={styles.slideImage} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src={bg_images[2]} className={styles.slideImage} />
+                  <img src={BgImage[2]} className={styles.slideImage} />
                 </SwiperSlide>
                 <SwiperSlide>
-                  <img src={bg_images[3]} className={styles.slideImage} />
+                  <img src={BgImage[3]} className={styles.slideImage} />
                 </SwiperSlide>
               </Swiper>
             </div>
