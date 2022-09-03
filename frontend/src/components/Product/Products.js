@@ -70,13 +70,14 @@ function Products() {
             {loading ? <Loader />:(
             <Fragment> 
                 <MetaData title = "Products -- Ecommerce" />
-                <h2 className='productsHeading'>Products</h2>
+                <h2 className='productsHeading'>Get fit with some yoga tips..</h2>
 
-                <div className='products'>
-                    {products && 
-                       products.map((product)=>(<ProductCard  key = {product._id}  product={product} />))}
-
-                </div>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/klmBssEYkdU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/RJ44oIxWiYI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/0vDs2fnq8ow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/YjmQVMLhNT4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IT94xC35u6k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/0XBcrjkkwQo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                 <div className='filterBox'>
                  <Typography>Price</Typography>
