@@ -11,6 +11,7 @@ useEffect(() => {
   .then((data)=>{
     setId(data.results[0].id)
 
+    fetch('')
 
   })
 
@@ -19,10 +20,7 @@ useEffect(() => {
 
   return (
     <div>
-      <h1 className='text-3xl text-orange-500 font-semibold underline m-5' >
-        Nutritional Assesment
-      </h1>
-      <p>{food}</p>
+     {id}
     </div>
   )
 }
