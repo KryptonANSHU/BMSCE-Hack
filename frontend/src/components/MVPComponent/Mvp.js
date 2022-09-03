@@ -11,14 +11,17 @@ import { storage } from "./firebase";
 import { v4 } from "uuid";
 import Assesment from './Assesment';
 import MealPlanner from './MealPlanner';
+import { Assessment } from '@mui/icons-material';
+import Loader from '../layout/Loader/loader'
 const Mvp = () => {
 
 
   const [file, setFile] = useState();
   const [progress, setProgress] = useState(0);
-  const [result, setResult] = useState();
+  const [result, setResult] = useState('');
   const [quantity, setQuantitiy] = useState();
   const [avatarPreview, setAvatarPreview] = useState('');
+  const [loader,setLoader]= useState(true)
 
   const [selectedFile, setSelectedFile] = useState();
   const [isSelected, setIsSelected] = useState(false);
@@ -62,6 +65,7 @@ const Mvp = () => {
 
 
   const predictsabgi = async () => {
+    setLoader(false)
     let data = {
       name
     }
@@ -110,11 +114,11 @@ const Mvp = () => {
           {/* <button onClick={predict}>predict dish </button > */}
 
           {
-        result?(<>
+        (result || loader)?(<>
           <div className=''>
               <p>Result : <span className='text-orange-500'> {result}</span></p>
           </div>
-        </>):(<></>)
+        </>):(<Loader />)
        }
 
         </section>
@@ -132,7 +136,11 @@ const Mvp = () => {
           }
         </section>
       </div>
-      
+
+      <h2 className='homeHeading'>Lets Analyse</h2>
+
+      <Assessment data = {result}/>
+
       <h2 className='homeHeading'>Lets Analyse</h2>
 
       <Assesment data={result} />

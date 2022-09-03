@@ -11,7 +11,7 @@ useEffect(() => {
   .then((data)=>{
     setId(data.results[0].id)
 
-    fetch('')
+    
 
   })
 
