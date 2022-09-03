@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
 import './mvp.css'
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
+import { storage } from "./firebase";
+import { v4 } from "uuid";
 import Assesment from './Assesment';
 import MealPlanner from './MealPlanner';
 const Mvp = () => {
@@ -10,68 +19,84 @@ const Mvp = () => {
   const [result, setResult] = useState();
   const [quantity, setQuantitiy] = useState();
   const [avatarPreview, setAvatarPreview] = useState('');
-  const [height, setHeight] = useState()
-  const [weight, setWeight] = useState()
-  const [age, setAge] = useState()
 
+  const [selectedFile, setSelectedFile] = useState();
+  const [isSelected, setIsSelected] = useState(false);
+  const [flag, setflag] = useState(false)
+  const [name, setname] = useState("");
+  const [imageUpload, setImageUpload] = useState(null);
 
-  // lang --> English Translated data
-  // language --> detected language
+  const [imageUrls, setImageUrls] = useState([]);
+  const [localurl, setlocalurl] = useState('')
+  const imagesListRef = ref(storage, "images/");
 
-  // const [convert,setConvert] = useState()
+  const changeHandler = (event) => {
 
-  const onFileChange = (e) => {
-    console.log(e.target.files[0])
-    setFile(e.target.files[0])
-    const type = e.target.files[0].type;
-    console.log(type)
-    if (type === "application/pdf") {
-      alert('Please Use Screenshots of PDF (Not PDF)....This Feature is Yet to be Implemented')
+    setImageUpload(event.target.files[0]);
+
+    var image = document.getElementById('outputimageupload');
+    image.src = URL.createObjectURL(event.target.files[0]);
+
+    setIsSelected(true);
+  };
+  const uploadFile = () => {
+    console.log(imageUpload)
+
+    if (imageUpload == null) {
+      setflag(false)
+      return;
     }
+    let fileuuidname = `${imageUpload.name + v4()}`
+    setname(fileuuidname)
+    const imageRef = ref(storage, `images/${fileuuidname}`);
+    console.log(imageRef);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls((prev) => [...prev, url]);
+      });
+    });
+    setflag(true)
 
-    const reader = new FileReader();
-    console.log('yooo')
-    reader.onload = () => {
+  };
 
-      console.log('Hi' + reader.readyState)
-      if (reader.readyState === 2) {
 
-        setAvatarPreview(reader.result);
 
-      }
+  const predictsabgi = async () => {
+    let data = {
+      name
     }
-
-
-    reader.readAsDataURL(e.target.files[0])
+    // const blog = { title, body, author };
+    await fetch('http://localhost:3002', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(name)
+    })
+      .then((response) => response.json())
+      .then((data) => setResult(data.category));
   }
 
-  // const registerDataChange = (e)=>{
-  //       const reader = new FileReader();
-  // console.log('yooo')
-  //       reader.onload=()=>{
 
-  //           console.log('Hi' + reader.readyState)
-  //           if(reader.readyState===2){
-
-  //               setAvatarPreview(reader.result);
-
-  //           }
-  //       }
-
-
-  //       reader.readAsDataURL(e.target.files[0])
-
-
-  // }
-
+  const predict = () => {
+    let data = {
+      name
+    }
+    // const blog = { title, body, author };
+    fetch('http://localhost:3002/dishdata', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(name)
+    })
+      .then((response) => response.json())
+      .then((data) => setResult(data.category));
+  }
 
   return (
-    <div>9
+    <div>
       <div className="parent3">
         <section className="left3">
           <p></p>
           <i class="fa-solid fa-arrow-down"></i>
-          <input type="file" onChange={onFileChange} accept="image/"></input>
+          <input type="file" onChange={changeHandler} accept="image/"></input>
           <span className='mx-5'>Choose Quantitiy Please </span>
           <select value={quantity} onChange={e => setQuantitiy(e.target.value)}>
             <option value={1}>Full</option>
@@ -79,8 +104,18 @@ const Mvp = () => {
             <option value={1 / 4}>Quarter</option>
           </select>
 
-          <button>Upload Button </button>
+          <button onClick={uploadFile}>Upload Button </button>
 
+          <button onClick={predictsabgi}>Predict Ingredient </button>
+          {/* <button onClick={predict}>predict dish </button > */}
+
+          {
+        result?(<>
+          <div className=''>
+              <p>Result : <span className='text-orange-500'> {result}</span></p>
+          </div>
+        </>):(<></>)
+       }
 
         </section>
 
@@ -88,57 +123,21 @@ const Mvp = () => {
 
         <section className="middle3 card card-5" >
           <h1>Extracted Data</h1>
-          {122
+          {
             (avatarPreview === "" && (
               <>
-                <img src={avatarPreview} alt="Avatar Preview" />
+                <img id='outputimageupload' alt="Avatar Preview" />
               </>
             ))
           }
         </section>
       </div>
+      
+      <h2 className='homeHeading'>Lets Analyse</h2>
 
-      <h2 className='homeHeading'>Nutritional Assesment</h2>
-      <Assesment data='banana' />
+      <Assesment data={result} />
 
-      <h2 className='homeHeading'>Nutritional Diagnosis</h2>
-      <h2 className='homeHeading'>Nutritional Assesment</h2>
-        <form className="signUpForm">
-        <div className="signUpName">
-          <input
-            type="text"
-            placeholder="Height"
-            required
-            name="height"
-            value={height}
-          />
-        </div>
-
-        <div className="signUpName">
-          <input
-            type="text"
-            placeholder="Weight"
-            required
-            name="weight"
-            value={weight}
-          />
-        </div>
-
-        <div className="signUpName">
-          <input
-            type="text"
-            placeholder="Age"
-            required
-            name="age"
-            value={age}
-          />
-        </div>
-
-      </form>
-
-      <h2 className='homeHeading'>Nutritional Meal Analyser</h2>
       <MealPlanner calorie={2000} />
-
     </div>
   )
 }

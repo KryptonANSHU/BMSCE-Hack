@@ -3,11 +3,10 @@ import Header from './components/layout/Header/Header.js';
 import Footer from './components/layout/Footer/Footer';
 import {BrowserRouter as  Router ,Route ,Routes} from 'react-router-dom';
 import webFont from 'webfontloader';
-import ProductDetails from './components/Product/ProductDetails';
 import React from 'react';
 import Home from './components/Home/Home';
 import Products from './components/Product/Products.js'
-import Search from './components/Product/Search.js';
+
 import LoginSignup from './components/User/LoginSignup';
 import store from './store';
 import {loadUser} from './actions/userActions'
@@ -50,10 +49,10 @@ function App() {
       </Route>
 
       <Route exact path="/" element={<Home />} />
-      <Route exact path="/product/:id" element={<ProductDetails />} />
-      <Route exact path="/products" element={<Products />} />
+  
+      <Route exact path="/yoga" element={<Products />} />
       <Route exact path="/products/:keyword" element={<Products />} />
-      <Route exact path="/search" element={<Search />} />
+      
       <Route exact path="/login" element={<LoginSignup />} />
       {/* <Route exact path="/about" element={<Bmi/>} /> */}
       <Route exact path="/bmi" element={<Bmi/>} />

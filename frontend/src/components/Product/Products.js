@@ -69,75 +69,18 @@ function Products() {
         <Fragment>
             {loading ? <Loader />:(
             <Fragment> 
-                <MetaData title = "Products -- Ecommerce" />
-                <h2 className='productsHeading'>Get fit with some yoga tips..</h2>
+                <MetaData title = "Yoga to stay healthy" />
+                <h2 className='homeHeading'>Get fit with some yoga tips..</h2>
 
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/klmBssEYkdU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/RJ44oIxWiYI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/0vDs2fnq8ow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/YjmQVMLhNT4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/IT94xC35u6k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/0XBcrjkkwQo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                <div className='filterBox'>
-                 <Typography>Price</Typography>
-                 <Slider
-                  value={price}
-                  onChange={priceHandler}
-                  valueLabelDisplay= "auto"
-                  aria-labelledby="range-slider"
-                  min={0}
-                  max={1000}
-                  />
-
-                  <Typography>Categories</Typography>
-                  < ul className='categoryBox' >
-                    {categories.map((category)=>(
-                        <li 
-                         className='category-link'
-                         key={category}
-                         onClick={()=>setCategory(category)}>
-                            {category}
-                        </li>
-                    ))}
-                  </ul>
-
-                  <fieldset>
-                    <Typography component='legend'>Ratings Above</Typography>
-                    <Slider 
-                     value={ratings}
-                     onChange={(e, newRating)=>{
-                        setRatings(newRating)
-                     }}
-                     aria-labelledby ='continous-slider'
-                     min={0}
-                     max={5}
-                     valueLabelDisplay="auto"
-                     />
-                  </fieldset>
-
+                <div className='productsHead border-2 m-10 '>
+                <iframe width="350" height="315" src="https://www.youtube.com/embed/klmBssEYkdU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="350" height="315" src="https://www.youtube.com/embed/RJ44oIxWiYI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="350" height="315" src="https://www.youtube.com/embed/0vDs2fnq8ow" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="350" height="315" src="https://www.youtube.com/embed/YjmQVMLhNT4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="350" height="315" src="https://www.youtube.com/embed/IT94xC35u6k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="350" height="315" src="https://www.youtube.com/embed/0XBcrjkkwQo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
-                   
-                   
-                   <div className='paginationBox'>
-                    <Pagination
-                      activePage={currentPage}
-                      itemsCountPerPage={resultPerPage}
-                      totalItemsCount={productsCount}
-                      onChange={setCurrentPageNo}
-                      nextPageText='Next'
-                      prevPageText="Prev"
-                      firstPageText="1st"
-                      lastPageText="Last"
-                      itemClass='page-item'
-                      linkClass='page-link' 
-                      activeClass='page-item-active'
-                      activeLinkClass='pageLinkActive'
-                    />
-                    
-                </div>
-             
             </Fragment>)}
         </Fragment>
      );

@@ -1,10 +1,10 @@
-from crypt import methods
+# from crypt import methods
 import json 
 import time
 from unicodedata import category
 from flask import Flask ,render_template, request,jsonify
 from flask_cors import CORS
-from flask_ngrok import run_with_ngrok
+# from flask_ngrok import run_with_ngrok
 import pyrebase
 import time
 import os
