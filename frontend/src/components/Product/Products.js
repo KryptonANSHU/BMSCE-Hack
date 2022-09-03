@@ -69,7 +69,7 @@ function Products() {
         <Fragment>
             {loading ? <Loader />:(
             <Fragment> 
-                <MetaData title = "Products -- Ecommerce" />
+                <MetaData title = "Yoga to stay healthy" />
                 <h2 className='homeHeading'>Get fit with some yoga tips..</h2>
 
                 <div className='productsHead border-2 m-10 '>
