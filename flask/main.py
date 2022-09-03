@@ -57,7 +57,7 @@ def dish():
 
 
     storage.child(path_on_cloud).download(filename="ieeeimage.jpg",path=os.path.basename('test'))
-    time.sleep(8)
+    time.sleep(4)
 
 
 
@@ -224,7 +224,7 @@ def hello_word():
 
 
     storage.child(path_on_cloud).download(filename="ieeeimage.jpg",path=os.path.basename('test'))
-    time.sleep(8)
+    time.sleep(4)
     
     from PIL import Image
     import tensorflow 

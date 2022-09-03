@@ -13,7 +13,14 @@ import Assesment from './Assesment';
 import MealPlanner from './MealPlanner';
 import { Assessment } from '@mui/icons-material';
 import Loader from '../layout/Loader/loader'
+import { Divider } from '@mui/material';
 const Mvp = () => {
+
+  const [weight, setWeight] = useState();
+  const [age, setAge] = useState();
+  const [height, setHeight] = useState();
+  const [act,setAct]=useState();
+  const [cal,setCal]=useState();
 
 
   const [file, setFile] = useState();
@@ -61,7 +68,27 @@ const Mvp = () => {
     setflag(true)
 
   };
+  const calorcal = (e) => {
+    e.preventDefault();
+    let RMR = weight * 13.75 + height * 5 - age * 6.76 + 655.1;
+    let totalcal, time;
 
+    if (act=='low') {
+      totalcal = 0.2 * RMR + RMR;
+      time = 60;
+    } else if (act=='mid') {
+      totalcal = 0.5 * RMR + RMR;
+      time = 80;
+    } else {
+      totalcal = 0.8 * RMR + RMR;
+      time = 120;
+    }
+
+    totalcal = time * 10 + totalcal;
+    totalcal = totalcal - 0.2 * totalcal;
+
+    setCal(totalcal)
+  };
 
 
   const predictsabgi = async () => {
@@ -96,8 +123,8 @@ const Mvp = () => {
 
   return (
     <div>
-      <div className="parent3">
-        <section className="left3">
+      <div className="parent3 ">
+        <section className="left3 border-2">
           <p></p>
           <i class="fa-solid fa-arrow-down"></i>
           <input type="file" onChange={changeHandler} accept="image/"></input>
@@ -126,7 +153,7 @@ const Mvp = () => {
 
 
         <section className="middle3 card card-5" >
-          <h1>Extracted Data</h1>
+          <h1>Selected Image</h1>
           {
             (avatarPreview === "" && (
               <>
@@ -137,15 +164,51 @@ const Mvp = () => {
         </section>
       </div>
 
-      <h2 className='homeHeading'>Lets Analyse</h2>
+      <h2 className='homeHeading'>Nutrition Assesment</h2>
+            <Assesment data={result} />
+         
+      
+            <Divider></Divider>
+      <h2 className='homeHeading'>Nutrition Diagnosis</h2>
+      <form className="loginForm" onSubmit={calorcal}>
+        <div className="loginEmail">
+          <input
+            type="number"
+            placeholder="Height"
+            required
+            onChange={(e) => setHeight(e.target.value)}
+          />
+        </div>
+        <div className="loginEmail">
+          <input
+            type="number"
+            placeholder="Weight"
+            required
+            onChange={(e) => setWeight(e.target.value)}
+          />
+        </div>
+        <div className="loginEmail">
+          <input
+            type="number"
+            placeholder="Age"
+            required
+            onChange={(e) => setAge(e.target.value)}
+          />
+        </div>
+        <div>
+          <input type="radio" value="low" name="gender" onChange={(e) => setAct(e.target.value)}/> Low
+          <input type="radio" value="mid" name="gender" onChange={(e) => setAct(e.target.value)}/> Mid
+          <input type="radio" value="high" name="gender" onChange={(e) => setAct(e.target.value)}/> High
+        </div>
+        <input type="submit" value="Calculate Calorie" className="loginBtn" />
+      </form>
+        <p className='text-center text-xl text-orange-400 font-extrabold my-3'>Your Target Calories : {cal}</p>
+        <Divider></Divider>
+      <h2 className='homeHeading'>Nutrition Intervention</h2>
 
-      <Assessment data = {result}/>
-
-      <h2 className='homeHeading'>Lets Analyse</h2>
-
-      <Assesment data={result} />
-
-      <MealPlanner calorie={2000} />
+      <MealPlanner calorie={cal} />
+      <Divider></Divider>
+      <h2 className='homeHeading'>Nutrition Moderation</h2>
     </div>
   )
 }

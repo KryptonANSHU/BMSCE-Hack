@@ -9,9 +9,10 @@ import "swiper/css/pagination";
 const styles = {
   slideImage: "w-full h-full bg-cover"
 }
+const textHeadings = ["Nutrition Assessment", "Nutrition Diagnosis", "Nutrition Intervention", "Monitoring/ Evaluation"]
+const textDescriptions = ["We assess all the basic nutrients and there quantity in your daily food item.", "The nutrients are now judged against and analysed that are they on the healthy side.", "If there is any form of unhealthy then we suggest proper and nutritious diet for the person.", "These are further evaluated and monitored for the best weight management and healthy lifestyle."]
 
-const textHeadings = ["SIGN UP!", "LOG IN", "TRADE/HOLD", "CLAIM!"]
-const textDescriptions = ["While purchasing your product, provide your email address to the staff so they can add you to the database", "Visit our website/app and login with your email address. No crypto wallet needed!", "Use this as your custodial wallet - you can choose to trade your NFTs, or you can hold it, which gives you access to discounts, events, and more.", "You can choose to withdraw your NFT to your crypto wallet if you ever wish to"]
+
 const images = ["../../images/Monitoring.png", "../../images/Intervention.png", "../../images/Diagnosis.png", "../../images/Monitoring.png"]
 const bg_images = ["../../images/cursor.png","../../images/cursor.png","../../images/cursor.png","../../images/cursor.png",]
 

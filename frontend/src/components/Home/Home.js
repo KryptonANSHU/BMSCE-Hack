@@ -9,8 +9,10 @@ import Loader from '../layout/Loader/loader';
 import { useAlert } from 'react-alert';
 import Working from './Working';
 import styles from "./Hero.module.css";
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate();
 
     const alert = useAlert();
     const dispatch = useDispatch();
@@ -18,7 +20,7 @@ function Home() {
 
     const {loading , error , products } = useSelector((state)=>state.products )
   
-
+ 
     useEffect(()=>{
        
     if(error)
@@ -46,7 +48,7 @@ function Home() {
 
                 <a href="#container">
                 
-                <button
+                <button onClick={()=>navigate("/nutrition")}
                 //   onClick={scrollToContactUs}
                   className={
                     // 'font-thin rounded-sm bg-gradient-to-r from-[#4A99D3] to-[#00A1D3] p-4 my-6 text-xs text-white  ' +

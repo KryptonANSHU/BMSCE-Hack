@@ -7,7 +7,7 @@ export default function MealList({ mealData }) {
   return (
     <main>
       <section className="nutrients">
-        <h1 className="hia">Macros</h1>
+        {/* <h1 className="hia">Macros</h1> */}
         <ul>
           <li>Calories: {nutrients.calories.toFixed(0)}</li>
           <li>Carbohydrates: {nutrients.carbohydrates.toFixed(0)}</li>

@@ -111,15 +111,15 @@
 }
 
 .card {
-  width: 85%;
-  background: rgb(239, 220, 198);
+  width: 55%;
+  background: rgb(226, 223, 222);
   border-radius: 2px;
   margin: 0.5rem;
   position: relative;
 }
 
 .card-5 {
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  /* box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); */
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 10px;
@@ -149,3 +149,7 @@ input[type="file"]{
   position: relative;
   left: 93px;
   }
+
+.loginForm{
+  width:35%
+}

@@ -5,7 +5,7 @@ export default function Meal({ meal }) {
 
   useEffect(() => {
     fetch(
-      `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=ee7cb0bda7894f23afce13adda285b90&includeNutrition=false`
+      `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=4197398f39a347779ebe6b83c15e846a&includeNutrition=false`
     )
       .then((response) => response.json())
       .then((data) => {
