@@ -19,6 +19,7 @@ import UpdateProfile  from './components/User/UpdateProfile';
 import Bmi from './components/BmiComponent';
 import FinalDiet from './components/BmiComponent/FinalDiet';
 import Chaticon from './components/Chaticon';
+import Mvp from './components/MVPComponent/Mvp';
 
 
 
@@ -57,6 +58,7 @@ function App() {
       {/* <Route exact path="/about" element={<Bmi/>} /> */}
       <Route exact path="/bmi" element={<Bmi/>} />
       <Route exact path="/diet-list" element={<FinalDiet />} />
+      <Route exact path="/nutrition" element={<Mvp />} />
       
 
       <Route exact path="/me/update" element={<ProtectedRoute />}>

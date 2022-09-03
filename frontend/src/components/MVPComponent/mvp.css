@@ -1,0 +1,151 @@
+.parent3{
+  height: 88vh;
+  /* border: 2px solid red; */
+  /* overflow-y: scroll; */
+  display: flex;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.left3{
+  width: 40%;
+  /* border: 2px solid black; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: rgb(224, 174, 107); */
+}
+
+
+.middle3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  border: 2px solid black;
+}
+.right3{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.left3 h1{
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: beige;
+  padding: 10px;
+  margin: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+}
+
+.left3 p{
+  margin-top: 80px;
+  font-size: 20px;
+  text-decoration: underline;
+}
+.left3 input{
+  margin: 20px;
+}
+/* .left3 p::before{
+  content: '';
+  position:absolute;
+  height: 400px;
+  left: 280px;
+  top: 220px;
+  z-index: -1;
+  border-radius: 20px;
+  width:400px;
+  background-color: rgb(227, 208, 155);
+} */
+
+.left3 input{
+  margin-top: 40px;
+  animation: all 2000ms ease-in;
+}
+.fa-solid{
+  margin-top: 20px;
+  font-size: 50px;
+}
+.left3 button {
+  color: #fff;
+  border: 3px solid #050505;
+  padding: 15px;
+  font-size: 20px;
+  background-image: -webkit-linear-gradient(30deg, #c266d3 50%, transparent 50%);
+  background-image: linear-gradient(30deg, #c266d3 50%, transparent 50%);
+  background-size: 800px;
+  background-repeat: no-repeat;
+  background-position: 0%;
+  -webkit-transition: background 300ms ease-in-out;
+  transition:  background 600ms ease-in-out;
+  margin-top:30px
+}
+.left3 button:hover {
+  background-position: 100%;
+  color: #000000;
+}
+
+.right3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.right3 h1{
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.middle3 h1{
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.middle2 input{
+  margin: 20px;
+}
+
+.card {
+  width: 85%;
+  background: rgb(239, 220, 198);
+  border-radius: 2px;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.card-5 {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 10px;
+}
+
+.right3 p{
+  height: 70%;
+  /* border: 2px solid black; */
+  width: 100%;
+  margin: 10px;
+  color: rgb(10, 118, 10);
+}
+.middle3 p{
+  height: 70%;
+  /* border: 2px solid black; */
+  width: 100%;
+  margin: 10px;
+  color: rgb(10, 118, 10);
+}
+
+.progress-bar{
+  margin-top:20px;
+}
+
+input[type="file"]{
+
+  position: relative;
+  left: 93px;
+  }

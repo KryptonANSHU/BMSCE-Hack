@@ -19,7 +19,7 @@ const options = {
   // link5Text: "BMI Analyses",
   link1Url: "/",
   link2Url: "/products",
-  link3Url: "/contact",
+  link3Url: "/nutrition",
   link4Url: "/bmi",
   link1Size: "1.3vmax",
   link1Color: "rgba(35, 35, 35,0.8)",
