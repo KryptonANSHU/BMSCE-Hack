@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cookieparser());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(fileUpload())
-
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 //routes imports
 const product = require('./routes/productRoute');
 const user= require('./routes/userRoute'); 

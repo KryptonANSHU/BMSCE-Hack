@@ -30,7 +30,7 @@ function App() {
 
     webFont.load({
       google:{
-        families:["Bitter" , "serif"]
+        families: ['PT Sans Narrow', 'sans-serif']
       }
     });
 

@@ -1,5 +1,7 @@
+import Cookies from 'universal-cookie';
 import React, { useState } from 'react'
 import './mvp.css'
+// import Cookies from 'universal-cookie';
 import {
   ref,
   uploadBytes,
@@ -15,13 +17,12 @@ import { Assessment } from '@mui/icons-material';
 import Loader from '../layout/Loader/loader'
 import { Divider } from '@mui/material';
 const Mvp = () => {
-
+  const cookies = new Cookies();
   const [weight, setWeight] = useState();
   const [age, setAge] = useState();
   const [height, setHeight] = useState();
   const [act,setAct]=useState();
   const [cal,setCal]=useState();
-
 
   const [file, setFile] = useState();
   const [progress, setProgress] = useState(0);
@@ -90,6 +91,14 @@ const Mvp = () => {
     setCal(totalcal)
   };
 
+  const getdiag=()=>{
+  console.log(cookies.get('Protein'))
+  console.log(cookies.get('Calories'))
+  console.log(cookies.get('Fat'))
+
+    
+  }
+
 
   const predictsabgi = async () => {
     setLoader(false)
@@ -108,6 +117,8 @@ const Mvp = () => {
 
 
   const predict = () => {
+    setLoader(false)
+
     let data = {
       name
     }
@@ -118,7 +129,7 @@ const Mvp = () => {
       body: JSON.stringify(name)
     })
       .then((response) => response.json())
-      .then((data) => setResult(data.category));
+      .then((data) => setResult(data));
   }
 
   return (
@@ -135,9 +146,11 @@ const Mvp = () => {
             <option value={1 / 4}>Quarter</option>
           </select>
 
-          <button onClick={uploadFile}>Upload Button </button>
+          <button onClick={uploadFile}>U P L O A D</button>
 
           <button onClick={predictsabgi}>Predict Ingredient </button>
+          <button onClick={predict}>Predict dish</button>
+
           {/* <button onClick={predict}>predict dish </button > */}
 
           {
@@ -170,8 +183,10 @@ const Mvp = () => {
       
             <Divider></Divider>
       <h2 className='homeHeading'>Nutrition Diagnosis</h2>
-      <form className="loginForm" onSubmit={calorcal}>
-        <div className="loginEmail">
+
+
+      <form className="loginForm3" onSubmit={calorcal}>
+        <div className="loginEmail1">
           <input
             type="number"
             placeholder="Height"
@@ -179,7 +194,7 @@ const Mvp = () => {
             onChange={(e) => setHeight(e.target.value)}
           />
         </div>
-        <div className="loginEmail">
+        <div className="loginEmail1">
           <input
             type="number"
             placeholder="Weight"
@@ -187,7 +202,7 @@ const Mvp = () => {
             onChange={(e) => setWeight(e.target.value)}
           />
         </div>
-        <div className="loginEmail">
+        <div className="loginEmail1">
           <input
             type="number"
             placeholder="Age"
@@ -209,6 +224,10 @@ const Mvp = () => {
       <MealPlanner calorie={cal} />
       <Divider></Divider>
       <h2 className='homeHeading'>Nutrition Moderation</h2>
+      <div className='text-center text-orange-500 text-xl font-semibold'>
+      <p>User Can Track hi All Day Calories Count</p>
+      <p>(Coming Soon)</p>
+      </div>
     </div>
   )
 }

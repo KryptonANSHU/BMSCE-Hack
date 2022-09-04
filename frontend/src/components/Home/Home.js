@@ -41,9 +41,9 @@ function Home() {
             {loading ? (<Loader />):(
 
             <Fragment>
-            <MetaData title="BurnCal"/>
+            <MetaData title="BurnCAL"/>
             <div className="banner">
-                <p className=' '>Welcome to BurnCal</p>
+                <h1 className='text-xl text-black border -4 p-5 border-bg-black'>Welcome to <span className='font-extrabold text-orange-700'>BurnCAL</span></h1>
                 <h1>Start Monitoring / Stop Bloating</h1>
 
                 <a href="#container">
@@ -60,7 +60,7 @@ function Home() {
                 </a>
             </div>
 
-            <h2 className='homeHeading'>Nutrition Care Process</h2>
+            <h2 className='homeHeading'>Nutrition Care Process (The Important 4 Steps)</h2>
 
             <Working />
 

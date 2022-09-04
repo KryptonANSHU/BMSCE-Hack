@@ -1,6 +1,3 @@
 ./backend/config/config.env
 node_modules
 ./frontend/node_modules
-
-./flask/FV.h5
-./flask/model_v1_inceptionV3.h5

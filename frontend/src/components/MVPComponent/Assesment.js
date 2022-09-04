@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Divider from '@mui/material/Divider';
 import Card from '@mui/material/Card';
+import Cookies from 'universal-cookie';
 const Assesment = ({data}) => {
+  const cookies = new Cookies();
   const [id,setId] = useState()
 const [food,setFood] = useState('')
 const [bad,setbad]=useState([])
@@ -10,13 +12,13 @@ const [good,setgood]=useState([])
 console.log(data)
 
 useEffect(() => {
-  fetch(`https://api.spoonacular.com/food/ingredients/search?apiKey=4197398f39a347779ebe6b83c15e846a&query=${data}&number=1`)
+  fetch(`https://api.spoonacular.com/food/ingredients/search?apiKey=8cb703b2d23a46de86b4e8635cd31441&query=${data}&number=1`)
   .then((response)=> response.json())
   .then((data)=>{
     console.log(data)
     setId(data.results[0].id)
   
-  fetch(`https://api.spoonacular.com/recipes/${data.results[0].id}/nutritionWidget.json?apiKey=456c36e8487b43a09029092269496f6f&includeNutrition=true`).then((response)=>response.json())
+  fetch(`https://api.spoonacular.com/recipes/${data.results[0].id}/nutritionWidget.json?apiKey=8cb703b2d23a46de86b4e8635cd31441&includeNutrition=true`).then((response)=>response.json())
   .then((data)=>{setbad(data.bad)
    setgood(data.good)}
   )  
@@ -31,11 +33,15 @@ useEffect(() => {
     // <Card sx={{ minWidth: 275 }}>
     <div className='flex justify-center'>
     <div className='w-[40%] border-2'>
-      <h1 className='text-center text-green-600'>BAD</h1>
+      <h1 className='text-center text-2xl font-semibold text-red-600'>BAD</h1>
      {bad?.map((item,int)=>(
+      
       <>
-       <div className='p-5 bg-gray-200'>
-       <span className='text-xl font-semibold'>{item.title}</span>:<span className='text-xl text-green-600 font-semibold'>{item.amount}</span>
+      {item.title==='Calories' && cookies.set(`${item.title}`,item.amount)}
+      {item.title==='Fat' && cookies.set(`${item.title}`,item.amount)}
+
+       <div className='p-4 bg-gray-200'>
+       <span className='text-xl font-semibold'>{item.title}</span>:<span className='text-xl text-red-600 font-semibold'>{item.amount}</span>
        </div> 
        <Divider></Divider>
        </>
@@ -44,10 +50,12 @@ useEffect(() => {
 
       <div className='w-[40%] border-2'>
 
-      <h1 className='text-center text-orange-500'>GOOD</h1>
+      <h1 className='text-center text-2xl font-semibold text-green-500'>GOOD</h1>
      {good?.map((item,int)=>(
       <>
-       <div className='p-2 bg-gray-200'><span  className='text-xl font-semibold'>{item.title}</span>:<span className='text-xl text-red-600 font-semibold'>{item.amount}</span></div> 
+      {item.title==='Protein' && cookies.set(`${item.title}`,item.amount)}
+
+       <div className='p-4 bg-gray-200'><span  className='text-xl font-semibold'>{item.title}</span>:<span className='text-xl text-green-600 font-semibold'>{item.amount}</span></div> 
        <Divider></Divider>
        </>
      ))}

@@ -77,7 +77,6 @@ def dish():
 
     import os
     import cv2
-    import pafy
     import math
     import random
     import numpy as np

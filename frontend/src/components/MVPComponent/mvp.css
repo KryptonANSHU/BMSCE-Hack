@@ -150,6 +150,10 @@ input[type="file"]{
   left: 93px;
   }
 
-.loginForm{
-  width:35%
+.loginForm3{
+  border: 2px solid black;
+ text-align: center;
+ padding: 10px;
+ width: 35%;
+ margin-left: 550px;
 }

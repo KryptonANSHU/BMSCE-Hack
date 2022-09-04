@@ -14,7 +14,7 @@ function Footer() {
        </div>
 
        <div className="midFooter">
-          <h1 className="underline">Burn-Cal</h1>
+          <h1 className="">BurnCAL</h1>
           <p>High quality is our first priority</p>
           <p>Copyrights 2021 &copy; teamKryptonite </p>
        </div>

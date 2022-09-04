@@ -25,7 +25,7 @@ export default function Working() {
       <div className="md:mt-20 flex flex-col mb-16 text-white font-manrope">
 
         {/* <h1 className="m-2 text-sky-400 text-lg md:text-xl tracking-wide font-thin">Discover More</h1> */}
-        <h1 className="font-bold text-3xl md:text-5xl">
+        <h1 className="font-bold text-3xl md:text-5xl text-orange-600">
           How does it work?
         </h1>
 

@@ -61,7 +61,7 @@ function UserOptions({user}) {
               style={{ zIndex: "11" }}
               icon={<img
                     className='speedDialIcon'
-                    src={user.avatar.url ? user.avatar.url : "./Profile.png"}
+                  //  src={user.avatar.url ? user.avatar.url : "./Profile.png"}
                     alt="Profile"
                     />}>
                 {options.map((item )=>(
