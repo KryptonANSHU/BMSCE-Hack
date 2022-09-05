@@ -1,5 +1,6 @@
 import Cookies from 'universal-cookie';
 import React, { useState } from 'react'
+import logo from '../../images/dashboard.png'
 import './mvp.css'
 // import Cookies from 'universal-cookie';
 import {
@@ -16,20 +17,27 @@ import MealPlanner from './MealPlanner';
 import { Assessment } from '@mui/icons-material';
 import Loader from '../layout/Loader/loader'
 import { Divider } from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 const Mvp = () => {
   const cookies = new Cookies();
   const [weight, setWeight] = useState();
   const [age, setAge] = useState();
   const [height, setHeight] = useState();
-  const [act,setAct]=useState();
-  const [cal,setCal]=useState();
+  const [act, setAct] = useState();
+  const [cal, setCal] = useState();
+
+
+  const [Fat,setFat] = useState()
+  const [Protein,setProtein] = useState()
+  const [Carb,setCarb] = useState()
+  const [Calories,setCalories] = useState()
 
   const [file, setFile] = useState();
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState('');
   const [quantity, setQuantitiy] = useState();
   const [avatarPreview, setAvatarPreview] = useState('');
-  const [loader,setLoader]= useState(true)
+  const [loader, setLoader] = useState(true)
 
   const [selectedFile, setSelectedFile] = useState();
   const [isSelected, setIsSelected] = useState(false);
@@ -40,6 +48,11 @@ const Mvp = () => {
   const [imageUrls, setImageUrls] = useState([]);
   const [localurl, setlocalurl] = useState('')
   const imagesListRef = ref(storage, "images/");
+
+  const [drop1, setDrop1] = useState(false);
+  const [drop2, setDrop2] = useState(false);
+  const [drop3, setDrop3] = useState(false);
+  const [drop4, setDrop4] = useState(false);
 
   const changeHandler = (event) => {
 
@@ -74,10 +87,10 @@ const Mvp = () => {
     let RMR = weight * 13.75 + height * 5 - age * 6.76 + 655.1;
     let totalcal, time;
 
-    if (act=='low') {
+    if (act == 'low') {
       totalcal = 0.2 * RMR + RMR;
       time = 60;
-    } else if (act=='mid') {
+    } else if (act == 'mid') {
       totalcal = 0.5 * RMR + RMR;
       time = 80;
     } else {
@@ -91,12 +104,12 @@ const Mvp = () => {
     setCal(totalcal)
   };
 
-  const getdiag=()=>{
-  console.log(cookies.get('Protein'))
-  console.log(cookies.get('Calories'))
-  console.log(cookies.get('Fat'))
+  const getdiag = () => {
+    console.log(cookies.get('Protein'))
+    console.log(cookies.get('Calories'))
+    console.log(cookies.get('Fat'))
 
-    
+
   }
 
 
@@ -132,6 +145,8 @@ const Mvp = () => {
       .then((data) => setResult(data));
   }
 
+ 
+
   return (
     <div>
       <div className="parent3 ">
@@ -154,12 +169,12 @@ const Mvp = () => {
           {/* <button onClick={predict}>predict dish </button > */}
 
           {
-        (result || loader)?(<>
-          <div className=''>
-              <p>Result : <span className='text-orange-500'> {result}</span></p>
-          </div>
-        </>):(<Loader />)
-       }
+            (result || loader) ? (<>
+              <div className=''>
+                <p>Result : <span className='text-orange-500'> {result}</span></p>
+              </div>
+            </>) : (<Loader />)
+          }
 
         </section>
 
@@ -177,57 +192,89 @@ const Mvp = () => {
         </section>
       </div>
 
-      <h2 className='homeHeading'>Nutrition Assesment</h2>
-            <Assesment data={result} />
-         
-      
-            <Divider></Divider>
-      <h2 className='homeHeading'>Nutrition Diagnosis</h2>
+      <h2 className='homeHeading'>Nutrition Assesment <ArrowDropDownIcon className='cursor-pointer' onClick={() => {
+        setDrop1(!drop1)
+      }} /> </h2>
 
-
-      <form className="loginForm3" onSubmit={calorcal}>
-        <div className="loginEmail1">
-          <input
-            type="number"
-            placeholder="Height"
-            required
-            onChange={(e) => setHeight(e.target.value)}
-          />
-        </div>
-        <div className="loginEmail1">
-          <input
-            type="number"
-            placeholder="Weight"
-            required
-            onChange={(e) => setWeight(e.target.value)}
-          />
-        </div>
-        <div className="loginEmail1">
-          <input
-            type="number"
-            placeholder="Age"
-            required
-            onChange={(e) => setAge(e.target.value)}
-          />
-        </div>
-        <div>
-          <input type="radio" value="low" name="gender" onChange={(e) => setAct(e.target.value)}/> Low
-          <input type="radio" value="mid" name="gender" onChange={(e) => setAct(e.target.value)}/> Mid
-          <input type="radio" value="high" name="gender" onChange={(e) => setAct(e.target.value)}/> High
-        </div>
-        <input type="submit" value="Calculate Calorie" className="loginBtn" />
-      </form>
-        <p className='text-center text-xl text-orange-400 font-extrabold my-3'>Your Target Calories : {cal}</p>
-        <Divider></Divider>
-      <h2 className='homeHeading'>Nutrition Intervention</h2>
-
-      <MealPlanner calorie={cal} />
+      {
+        drop1 ? (<Assesment data={result} />) : (<></>)
+      }
       <Divider></Divider>
-      <h2 className='homeHeading'>Nutrition Moderation</h2>
-      <div className='text-center text-orange-500 text-xl font-semibold'>
-      <p>User Can Track hi All Day Calories Count</p>
-      <p>(Coming Soon)</p>
-      </div>
+
+      <h2 className='homeHeading'>Nutrition Diagnosis <ArrowDropDownIcon className='cursor-pointer' onClick={() => {
+        setDrop2(!drop2)
+      }} /> </h2>
+
+      {
+        drop2 ? (<>
+  
+          <form className="loginForm3" onSubmit={calorcal}>
+            <div className="loginEmail1">
+              <input
+                type="number"
+                placeholder="Height (cm)"
+                required
+                onChange={(e) => setHeight(e.target.value)}
+              />
+            </div>
+            <div className="loginEmail1">
+              <input
+                type="number"
+                placeholder="Weight (Kg)"
+                required
+                onChange={(e) => setWeight(e.target.value)}
+              />
+            </div>
+            <div className="loginEmail1">
+              <input
+                type="number"
+                placeholder="Age"
+                required
+                onChange={(e) => setAge(e.target.value)}
+              />
+            </div>
+            <div>
+              <input type="radio" value="low" name="gender" onChange={(e) => setAct(e.target.value)} /> Low
+              <input type="radio" value="mid" name="gender" onChange={(e) => setAct(e.target.value)} /> Mid
+              <input type="radio" value="high" name="gender" onChange={(e) => setAct(e.target.value)} /> High
+            </div>
+            <input type="submit" value="Calculate Calorie" className="loginBtn" />
+          </form>
+          <p className='text-center text-xl text-orange-400 font-extrabold my-3'>Your Target Calories : {cal}</p>
+        </>) : (<></>)
+      }
+
+      <Divider></Divider>
+
+      <h2 className='homeHeading'>Nutrition Intervention<ArrowDropDownIcon className='cursor-pointer' onClick={() => {
+        setDrop3(!drop3)
+      }} /> </h2>
+
+      {
+        drop3 ? (<>
+          <MealPlanner calorie={cal} />
+        </>) : (<></>)
+      }
+
+      <Divider></Divider>
+      <h2 className='homeHeading'>Nutrition Moderation <ArrowDropDownIcon className='cursor-pointer' onClick={() => {
+        setDrop4(!drop4)
+      }} /> </h2>
+
+      {
+        drop4 ? (<>
+          <div className='text-center text-orange-500 text-xl font-semibold'>
+            <p>User Can Track his All Day Calories Count</p>
+            <p>(Coming Soon)</p>
+
+          <div className='w-full text-center mx-auto my-10 p-5'>
+            <img src={logo} className='h-[400px] ml-[400px] coming'/>
+          </div>
+
+          </div>
+        </>) : (<></>)
+      }
+
     </div>
   )
 }

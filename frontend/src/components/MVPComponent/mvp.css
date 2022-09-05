@@ -157,3 +157,46 @@ input[type="file"]{
  width: 35%;
  margin-left: 550px;
 }
+
+
+input[type=number]{
+  width:100%;
+  border:2px solid #aaa;
+  border-radius:4px;
+  margin:8px 0;
+  outline:none;
+  padding:8px;
+  box-sizing:border-box;
+  transition:.3s;
+}
+
+input[type=number]:focus{
+  border-color:dodgerBlue;
+  box-shadow:0 0 8px 0 dodgerBlue;
+}
+
+input[type="radio"] {
+  /* ...existing styles */
+  /* display: grid; */
+  margin: 1rem;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.coming{
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+}
