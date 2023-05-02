@@ -30,3 +30,4 @@ YOGA
 
 BMI ANALYSIS
 ![image](https://user-images.githubusercontent.com/72062616/188294220-f934bd74-4a63-4518-b600-1671a4d5082f.png)
+Just a Update
